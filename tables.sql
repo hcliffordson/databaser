@@ -113,7 +113,7 @@ CREATE TABLE Taken
 CREATE TABLE WaitingList
 (
 	student 	numeric(10)		REFERENCES 		Students(idnr),
-	course 		char(6)			REFERENCES		Courses(code),
+	course 		char(6)			REFERENCES		LimitedCourses,
 	position	SERIAL			NOT NULL,
 	CONSTRAINT	waiting_list_pk	PRIMARY KEY (student, course)
 );
