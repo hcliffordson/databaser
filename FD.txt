@@ -1,0 +1,4 @@
+FD {Domain}
+
+dcode, dname, pcode, pname, bname, sidnr, sname, slogin, ccode, cname, c_credits, 
+tc_grade, lc_seats, c_classification, clname, requiredcourse, wposition  
