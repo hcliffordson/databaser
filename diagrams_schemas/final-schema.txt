@@ -1,0 +1,63 @@
+ER Schema
+
+Departments(_dept_code_, _dept_name_)
+
+Programs(prog_code, _prog_name_)
+
+DepartmentPrograms(_dept_name_, _prog_name_)
+    dept_name -> Departments.dept_name
+    prog_name -> Programs.prog_name
+
+Branches(_branch_name_, _program_)
+    program -> Programs.prog_name
+
+Students(_idnr_, student_name, student_login, program)
+    program -> Programs.prog_name
+
+StudentBranches(_student_, branch, program)
+    student -> Students.idnr
+    (branch, program) -> (Branches.branch_name, Branches.branch_program)
+    (student, program) -> Student.program
+
+Courses(_course_code_, course_name, course_credits, department)
+    department -> Departments.dept_code
+
+MandatoryProgramCourses(_course_, program)
+    course -> Courses.course_code 
+    program -> Programs.prog_name
+
+TakenCourses(_student_, course, grade)
+    student -> Students.idnr
+    course -> Courses.course_code
+
+LimitedCourses(_course_, seats)
+    course -> Courses.course_code 
+
+ClassifiedCourses(_course_, classification)
+    course -> Courses.course_code
+    classification -> Classifications.name 
+
+Classifications(_name_)
+
+RestrictedCourses(_course_, required_course)    -- Hur kan en "Study admin" overrida detta?
+    course -> Courses.course_code
+    required_course -> Courses.course_code
+
+RegisteredCourses(_student_, course)            -- Hur får vi in här att det krävs förkunskaper för vissa kurser
+    student -> Student.idnr
+    course -> Courses.course_code
+
+Waiting(_student_, course, position)            -- Hur kan en "Study admin" overrida detta?
+    student -> Student.idnr
+    course -> LimitedCourses.course
+    unique (course, position)
+
+MandatoryBranchCourses(_branch_, branch_program, course)
+    (branch, program) -> (Branches.branch_name, Branches.branch_program)
+    course -> Courses.course_code
+
+RecommendedBranchCourses(_branch_, branch_program, course)  
+    (branch, program) -> (Branches.branch_name, Branches.branch_program)
+    course -> Courses.course_code
+
+

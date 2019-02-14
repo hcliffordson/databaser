@@ -1,0 +1,44 @@
+Domain = (dcode, dname, pcode, pname, bname, sidnr, sname, slogin, ccode, cname, c_credits, tc_grade, lc_seats, c_classification, clname, wposition)
+
+KEYS:   (slogin, ccode, c_classification), (sidnr, ccode, c_classification)
+
+FD:     dcode -> dname
+        dname -> dcode
+        pname -> pcode
+        sidnr -> sname, slogin, pname, bname
+        slogin -> sidnr
+        ccode -> ccode, cname, c_credits, dcode, lc_seats
+        (sidnr, ccode) -> tc_grade, wposition
+        (ccode, c_classification) -> clname
+
+-----------------------------------------------------------------------------------------------------------------------------------------      
+
+1. = (dcode, dname)
+FD:     dcode -> dname
+        dname -> dcode
+KEYS:   dcode, dname
+
+2. = (ccode, cname, c_credits, dcode, dname, lc_seats)
+FD:     ccode -> ccode, cname, c_credits, dcode, lc_seats
+KEYS:   ccode
+
+3. = (ccode, c_classification, clname)
+FD:     (ccode, c_classification) -> clname
+KEYS    (ccode, c_classification) 
+
+4. = (pname, pcode)
+FD:     pname -> pcode
+KEYS    pname
+
+5. = (slogin, sname, sidnr, pname, bname)
+FD:     sidnr -> sname, slogin, pname, bname
+        slogin -> sidnr
+KEYS:   sidnr, slogin
+
+6. = (slogin, ccode, tc_grade, wposition)
+FD:     (slogin, ccode) -> tc_grade, wposition
+KEYS:   (slogin, ccode)
+
+7. = (slogin, ccode, c_classification)
+FD:     -
+KEYS:   (slogin, ccode, c_classification)
