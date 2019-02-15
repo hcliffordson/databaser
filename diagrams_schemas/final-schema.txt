@@ -1,6 +1,6 @@
 ER Schema
 
-Departments(_dept_code_, _dept_name_)
+Departments(dept_code, _dept_name_)
 
 Programs(prog_code, _prog_name_)
 
@@ -14,7 +14,7 @@ Branches(_branch_name_, _program_)
 Students(_idnr_, student_name, student_login, program)
     program -> Programs.prog_name
 
-StudentBranches(_student_, branch, program)
+StudentBranches(_student_, _branch_, _program_)
     student -> Students.idnr
     (branch, program) -> (Branches.branch_name, Branches.branch_program)
     (student, program) -> Student.program
@@ -33,30 +33,30 @@ TakenCourses(_student_, course, grade)
 LimitedCourses(_course_, seats)
     course -> Courses.course_code 
 
-ClassifiedCourses(_course_, classification)
+ClassifiedCourses(_course_, _classification_)
     course -> Courses.course_code
     classification -> Classifications.name 
 
 Classifications(_name_)
 
-RestrictedCourses(_course_, required_course)    -- Hur kan en "Study admin" overrida detta?
+RestrictedCourses(_course_, _required_course_)
     course -> Courses.course_code
     required_course -> Courses.course_code
 
-RegisteredCourses(_student_, course)            -- Hur får vi in här att det krävs förkunskaper för vissa kurser
+RegisteredCourses(_student_, _course_)    
     student -> Student.idnr
     course -> Courses.course_code
 
-Waiting(_student_, course, position)            -- Hur kan en "Study admin" overrida detta?
+WaitingList(_student_, _course_, position)
     student -> Student.idnr
     course -> LimitedCourses.course
     unique (course, position)
 
-MandatoryBranchCourses(_branch_, branch_program, course)
+MandatoryBranchCourses(_branch_, _branch_program_, _course_)
     (branch, program) -> (Branches.branch_name, Branches.branch_program)
     course -> Courses.course_code
 
-RecommendedBranchCourses(_branch_, branch_program, course)  
+RecommendedBranchCourses(_branch_, branch_program, _course_)  
     (branch, program) -> (Branches.branch_name, Branches.branch_program)
     course -> Courses.course_code
 

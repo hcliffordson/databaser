@@ -1,6 +1,6 @@
 ER Schema
 
-Departments(_dept_code_, _dept_name_)
+Departments(dept_code, _dept_name_)
 
 Programs(prog_code, _prog_name_, department)
     department -> Departments.dept_code
@@ -11,16 +11,16 @@ Branches(_branch_name_, _program_)
 Students(_idnr_, student_name, student_login, program)
     program -> Programs.prog_name
 
-StudentBranches(_student_, branch, program)     -- ska program finnas med???
+StudentBranches(_student_, branch)
     student -> Students.idnr
     branch -> Branches.branch_name
 
 Courses(_course_code_, course_name, course_credits, department)
-    department -> Departments.dept_code
+    department -> Departments.dept_name
 
 MandatoryProgramCourses(_course_, program)
     course -> Courses.course_code 
-    program -> Programs.prog_name
+    program -> Programs.prog_name 
 
 TakenCourses(_student_, course, grade)
     student -> Students.idnr
@@ -35,15 +35,15 @@ ClassifiedCourses(_course_, classification)
 
 Classifications(_name_)
 
-RestrictedCourses(_course_, required_course)    -- Hur kan en "Study admin" overrida detta?
+RestrictedCourses(_course_, required_course) 
     course -> Courses.course_code
     required_course -> Courses.course_code
 
-RegisteredCourses(_student_, course)            -- Hur får vi in här att det krävs förkunskaper för vissa kurser
+RegisteredCourses(_student_, course)      
     student -> Student.idnr
     course -> Courses.course_code
 
-Waiting(_student_, course, position)            -- Hur kan en "Study admin" overrida detta?
+WaitingList(_student_, course, position) 
     student -> Student.idnr
     course -> LimitedCourses.course
 
