@@ -1,9 +1,12 @@
 ER Schema
 
-Departments(dept_code, _dept_name_)
+Departments(_dept_name_, dept_code)
 
-Programs(prog_code, _prog_name_, department)
-    department -> Departments.dept_code
+Programs(_prog_name_, prog_code)            
+
+DepartmentPrograms(_dept_name_, _prog_name_)        -- hosts 
+    dept_name -> Departments.dept_name
+    prog_name -> Programs.prog_name
 
 Branches(_branch_name_, _program_)
     program -> Programs.prog_name
@@ -11,9 +14,10 @@ Branches(_branch_name_, _program_)
 Students(_idnr_, student_name, student_login, program)
     program -> Programs.prog_name
 
-StudentBranches(_student_, branch)
+StudentBranches(_student_, branch, program)
     student -> Students.idnr
-    branch -> Branches.branch_name
+    (branch, program) -> (Branches.branch_name, Branches.program)
+    (student, program) -> Student.program
 
 Courses(_course_code_, course_name, course_credits, department)
     department -> Departments.dept_name
@@ -43,15 +47,15 @@ RegisteredCourses(_student_, course)
     student -> Student.idnr
     course -> Courses.course_code
 
-WaitingList(_student_, course, position) 
+WaitingList(_student_, _course_, position) 
     student -> Student.idnr
     course -> LimitedCourses.course
 
-MandatoryBranchCourses(_branch_, branch_program, course)
+MandatoryBranchCourses(_branch_, _branch_program_, _course_)
     (branch, program) -> (Branches.branch_name, Branches.branch_program)
     course -> Courses.course_code
 
-RecommendedBranchCourses(_branch_, branch_program, course)  
+RecommendedBranchCourses(_branch_, _branch_program_, _course_)  
     (branch, program) -> (Branches.branch_name, Branches.branch_program)
     course -> Courses.course_code
 
