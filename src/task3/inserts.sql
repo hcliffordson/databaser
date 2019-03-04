@@ -1,0 +1,143 @@
+INSERT INTO Departments VALUES ('CSEP', 'Dep1');
+INSERT INTO Departments VALUES ('CSDA', 'Dep2');
+INSERT INTO Departments VALUES ('ENMA', 'Dep3');
+INSERT INTO Departments VALUES ('PHYM', 'Dep4');
+
+INSERT INTO Programs VALUES ('Prog1', 'TKIT');
+INSERT INTO Programs VALUES ('Prog2', 'TKDA');
+INSERT INTO Programs VALUES ('Prog3', 'TKSB');
+INSERT INTO Programs VALUES ('Prog4', 'TKMA');
+
+INSERT INTO Branches VALUES ('B1','Prog1');
+INSERT INTO Branches VALUES ('B2','Prog1');
+INSERT INTO Branches VALUES ('B1','Prog2');
+
+INSERT INTO DepartmentPrograms VALUES ('Dep1', 'Prog1');
+INSERT INTO DepartmentPrograms VALUES ('Dep2', 'Prog2');
+INSERT INTO DepartmentPrograms VALUES ('Dep3', 'Prog3');
+INSERT INTO DepartmentPrograms VALUES ('Dep4', 'Prog4');
+
+INSERT INTO Students VALUES (1111111111,'S1','ls1','Prog1');
+INSERT INTO Students VALUES (2222222222,'S2','ls2','Prog1');
+INSERT INTO Students VALUES (3333333333,'S3','ls3','Prog1');
+INSERT INTO Students VALUES (4444444444,'S4','ls4','Prog1');
+INSERT INTO Students VALUES (5555555555,'S5','ls5','Prog2');
+INSERT INTO Students VALUES (6666666666,'S6','ls6','Prog2');
+INSERT INTO Students VALUES (7777777777,'S7','ls7','Prog2');
+INSERT INTO Students VALUES (8888888888,'S8','ls8','Prog2');
+
+INSERT INTO Courses VALUES ('CCC111','C1',15,'Dep1');
+INSERT INTO Courses VALUES ('CCC222','C2',5, 'Dep1');
+INSERT INTO Courses VALUES ('CCC333','C3',10,'Dep1');
+INSERT INTO Courses VALUES ('CCC444','C4',30,'Dep2');
+INSERT INTO Courses VALUES ('CCC555','C5',10,'Dep2');
+INSERT INTO Courses VALUES ('CCC666','C6',10,'Dep2');
+
+INSERT INTO LimitedCourses VALUES ('CCC222',1);
+INSERT INTO LimitedCourses VALUES ('CCC333',2);
+
+INSERT INTO Classifications VALUES ('math');
+INSERT INTO Classifications VALUES ('research');
+INSERT INTO Classifications VALUES ('seminar');
+
+INSERT INTO ClassifiedCourses VALUES ('CCC111','math');
+INSERT INTO ClassifiedCourses VALUES ('CCC222','research');
+INSERT INTO ClassifiedCourses VALUES ('CCC333','seminar');
+INSERT INTO ClassifiedCourses VALUES ('CCC444','math');
+INSERT INTO ClassifiedCourses VALUES ('CCC555','research');
+
+INSERT INTO MandatoryProgramCourses VALUES ('CCC111','Prog1');
+INSERT INTO MandatoryProgramCourses VALUES ('CCC222','Prog1');
+INSERT INTO MandatoryProgramCourses VALUES ('CCC333','Prog2');
+
+INSERT INTO MandatoryBranchCourses VALUES ('CCC444', 'B1', 'Prog1');
+INSERT INTO MandatoryBranchCourses VALUES ('CCC555', 'B2', 'Prog1');
+INSERT INTO MandatoryBranchCourses VALUES ('CCC555', 'B1', 'Prog2');
+
+INSERT INTO RecommendedBranchCourses VALUES ('CCC555', 'B1', 'Prog1');
+INSERT INTO RecommendedBranchCourses VALUES ('CCC444', 'B2', 'Prog1');
+INSERT INTO RecommendedBranchCourses VALUES ('CCC666', 'B1', 'Prog2');
+
+INSERT INTO RegisteredCourses VALUES (2222222222,'CCC444');
+INSERT INTO RegisteredCourses VALUES (5555555555,'CCC555');
+INSERT INTO RegisteredCourses VALUES (6666666666,'CCC333');
+--INSERT INTO RegisteredCourses VALUES (3333333333,'CCC222');
+
+INSERT INTO WaitingList VALUES(3333333333,'CCC222',1);
+INSERT INTO WaitingList VALUES(3333333333,'CCC333',1);
+INSERT INTO WaitingList VALUES(2222222222,'CCC333',2);
+
+INSERT INTO StudentBranches VALUES (2222222222,'B1','Prog1');
+INSERT INTO StudentBranches VALUES (3333333333,'B2','Prog1');
+INSERT INTO StudentBranches VALUES (4444444444,'B2','Prog1');
+INSERT INTO StudentBranches VALUES (5555555555,'B1','Prog2');
+INSERT INTO StudentBranches VALUES (6666666666,'B1','Prog2');
+INSERT INTO StudentBranches VALUES (7777777777,'B1','Prog2');
+INSERT INTO StudentBranches VALUES (8888888888,'B1','Prog2');
+
+
+INSERT INTO TakenCourses VALUES(1111111111,'CCC111','5');
+--INSERT INTO TakenCourses VALUES(1111111111,'CCC222','4');
+INSERT INTO TakenCourses VALUES(1111111111,'CCC333','3');
+INSERT INTO TakenCourses VALUES(1111111111,'CCC444','4');
+INSERT INTO TakenCourses VALUES(1111111111,'CCC555','5');
+INSERT INTO TakenCourses VALUES(1111111111,'CCC666','5');
+
+INSERT INTO TakenCourses VALUES(2222222222,'CCC111','5');
+-- INTO TakenCourses VALUES(2222222222,'CCC222','3');
+INSERT INTO TakenCourses VALUES(2222222222,'CCC333','5');
+INSERT INTO TakenCourses VALUES(2222222222,'CCC555','5');
+INSERT INTO TakenCourses VALUES(2222222222,'CCC666','5');
+
+INSERT INTO TakenCourses VALUES(3333333333,'CCC111','4');
+INSERT INTO TakenCourses VALUES(3333333333,'CCC333','4');
+INSERT INTO TakenCourses VALUES(3333333333,'CCC444','5');
+INSERT INTO TakenCourses VALUES(3333333333,'CCC555','5');
+INSERT INTO TakenCourses VALUES(3333333333,'CCC666','4');
+
+INSERT INTO TakenCourses VALUES(4444444444,'CCC111','5');
+-- INTO TakenCourses VALUES(4444444444,'CCC222','5');
+INSERT INTO TakenCourses VALUES(4444444444,'CCC333','5');
+INSERT INTO TakenCourses VALUES(4444444444,'CCC444','U');
+INSERT INTO TakenCourses VALUES(4444444444,'CCC555','5');
+INSERT INTO TakenCourses VALUES(4444444444,'CCC666','5');
+
+INSERT INTO TakenCourses VALUES(5555555555,'CCC111','5');
+--INSERT INTO TakenCourses VALUES(5555555555,'CCC222','5');
+INSERT INTO TakenCourses VALUES(5555555555,'CCC333','3');
+INSERT INTO TakenCourses VALUES(5555555555,'CCC444','3');
+INSERT INTO TakenCourses VALUES(5555555555,'CCC666','4');
+
+INSERT INTO TakenCourses VALUES(6666666666,'CCC111','5');
+-- INSERT INTO TakenCourses VALUES(6666666666,'CCC222','5');
+INSERT INTO TakenCourses VALUES(6666666666,'CCC333','U');
+INSERT INTO TakenCourses VALUES(6666666666,'CCC444','3');
+INSERT INTO TakenCourses VALUES(6666666666,'CCC555','5');
+INSERT INTO TakenCourses VALUES(6666666666,'CCC666','3');
+
+INSERT INTO TakenCourses VALUES(7777777777,'CCC111','4');
+INSERT INTO TakenCourses VALUES(7777777777,'CCC222','4');
+INSERT INTO TakenCourses VALUES(7777777777,'CCC333','4');
+INSERT INTO TakenCourses VALUES(7777777777,'CCC444','4');
+INSERT INTO TakenCourses VALUES(7777777777,'CCC555','5');
+
+INSERT INTO TakenCourses VALUES(8888888888,'CCC111','5');
+-- INSERT INTO TakenCourses VALUES(8888888888,'CCC222','5');
+--INSERT INTO TakenCourses VALUES(8888888888,'CCC333','5');
+INSERT INTO TakenCourses VALUES(8888888888,'CCC444','5');
+INSERT INTO TakenCourses VALUES(8888888888,'CCC555','5');
+INSERT INTO TakenCourses VALUES(8888888888,'CCC666','5');
+
+INSERT INTO RestrictedCourses VALUES ('CCC333', 'CCC222')
+
+-- Student 1111111111: doesn't belong to any branch
+-- Student 2222222222: hasn't takenCoursesTakenCourses the mandatory courses on his branch
+-- Student 3333333333: hasn't takenCoursesTakenCourses the mandatory courses on his program
+-- Student 4444444444: doesn't has enough math credits
+-- Student 5555555555: doesn't has research credits
+-- Student 6666666666: hasn't takenCoursesTakenCourses any seminar
+-- Student 7777777777: hasn't enough credits from the recomended courses of his branch
+-- Student 8888888888: is qualified
+
+
+
